@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import Paper from '@mui/material/Paper';
 
 
 function TemperatureConverter() {
@@ -26,31 +27,35 @@ function TemperatureConverter() {
     };
 
     return (
-        <Box sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}>
-            <div>
+        <Box
+            sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                '& > :not(style)': {
+                    m: 1,
+                    width: 300,
+                    height: 150,
+                },
+            }}
+        >
+            <Paper elevation={3}>
                 <TextField
-                    id="tc"
                     label="Температура по Цельсию"
-                    variant="outlined"
+                    variant="standard"
                     value={currentTemperatureInCelsium}
                     onChange={onCelsiumChanged} />
-            </div>
-            <div>
                 <TextField
-                    id="tf"
                     label="Температура по Фаренгейту"
-                    variant="outlined"
+                    variant="standard"
                     value={currentTemperatureInFahrenheit}
                     onChange={onFahrenheitChange} />
-            </div>
-            <div>
                 <Button
                     variant="contained"
-                    onClick={resetButtonClicked} 
-                >
+                    onClick={resetButtonClicked}>
                     Сбросить
                 </Button>
-            </div>
+            </Paper>
+
         </Box>
     );
 }
